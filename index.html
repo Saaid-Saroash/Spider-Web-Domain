@@ -532,14 +532,15 @@
       darkModeToggle.innerText = document.body.classList.contains("dark-mode") ? "Light Mode" : "Dark Mode";
     });
 
-    /* Product Array: 6 Website Products */
+    /* Product Array: 6 Website Products with prices in PKR
+       Prices are set between 1000 PKR (for Blog Website) to 5000 PKR (for E-commerce Website) */
     const products = [
-      { id: 1, name: "Minimalist Website", specs: "Clean, modern, minimalistic design", price: 499, image: "minimalist.png" },
-      { id: 2, name: "Creative Website", specs: "Bold, artistic design with engaging visuals", price: 699, image: "creative website.png" },
-      { id: 3, name: "Corporate Website", specs: "Professional, business-focused design", price: 599, image: "cop.png" },
-      { id: 4, name: "E-commerce Website", specs: "Dynamic, interactive, user-friendly e-commerce design", price: 899, image: "ec.png" },
-      { id: 5, name: "Portfolio Website", specs: "Elegant, creative portfolio design", price: 399, image: "pw.png" },
-      { id: 6, name: "Blog Website", specs: "Clean, readable, content-focused design", price: 299, image: "bw.png" }
+      { id: 1, name: "Minimalist Website", specs: "Clean, modern, minimalistic design", price: 2300, image: "minimalist.png" },
+      { id: 2, name: "Creative Website", specs: "Bold, artistic design with engaging visuals", price: 3700, image: "creative website.png" },
+      { id: 3, name: "Corporate Website", specs: "Professional, business-focused design", price: 3000, image: "cop.png" },
+      { id: 4, name: "E-commerce Website", specs: "Dynamic, interactive, user-friendly e-commerce design", price: 5000, image: "ec.png" },
+      { id: 5, name: "Portfolio Website", specs: "Elegant, creative portfolio design", price: 1700, image: "pw.png" },
+      { id: 6, name: "Blog Website", specs: "Clean, readable, content-focused design", price: 1000, image: "bw.png" }
     ];
 
     /* Advanced Cart Functionality */
@@ -585,7 +586,7 @@
           <div class="card-content">
             <h3>${product.name}</h3>
             <p>${product.specs}</p>
-            <p class="price">$${product.price}</p>
+            <p class="price">PKR ${product.price}</p>
             <button onclick="addToCart(${product.id})">Add to Cart</button>
           </div>
         `;
@@ -605,11 +606,11 @@
         itemDiv.innerHTML = `
           <strong>${item.name}</strong><br>
           <small>${item.specs}</small><br>
-          <span>Price: $${item.price}</span><br>
+          <span>Price: PKR ${item.price}</span><br>
           <span>Quantity: ${item.quantity}</span>
           <button onclick="decreaseQuantity(${item.id})">-</button>
           <button onclick="increaseQuantity(${item.id})">+</button>
-          <span>Total: $${item.price * item.quantity}</span>
+          <span>Total: PKR ${item.price * item.quantity}</span>
           <button style="float:right;" onclick="removeFromCart(${index})">Remove</button>
         `;
         cartContainer.appendChild(itemDiv);
@@ -618,7 +619,7 @@
       const totalDiv = document.createElement("div");
       totalDiv.style.marginTop = "20px";
       totalDiv.style.fontWeight = "bold";
-      totalDiv.innerText = "Order Total: $" + total;
+      totalDiv.innerText = "Order Total: PKR " + total;
       cartContainer.appendChild(totalDiv);
       const clearBtn = document.createElement("button");
       clearBtn.innerText = "Clear Cart";
@@ -676,10 +677,10 @@
       }
       let orderDetails = "New Order Received:\n\n";
       cart.forEach((item, index) => {
-        orderDetails += `${index + 1}. ${item.name} - $${item.price} x ${item.quantity} = $${item.price * item.quantity}\n   Specs: ${item.specs}\n\n`;
+        orderDetails += `${index + 1}. ${item.name} - PKR ${item.price} x ${item.quantity} = PKR ${item.price * item.quantity}\n   Specs: ${item.specs}\n\n`;
       });
       const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-      orderDetails += "Order Total: $" + total;
+      orderDetails += "Order Total: PKR " + total;
       const mailtoLink = `mailto:spiderwebdomain.official@gmail.com?subject=New Order Received&body=${encodeURIComponent(orderDetails)}`;
       cart = [];
       localStorage.removeItem("cart");
