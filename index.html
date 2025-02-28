@@ -8,7 +8,6 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Main and Elegant Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet" />
   <!-- PWA Manifest -->
@@ -22,7 +21,8 @@
       --text-color: #444;
       --light-bg: #f4f4f4;
       --white: #fff;
-      --transition-speed: 0.3s;
+      --auto-slide-interval: 3000ms;
+      --transition-duration: 0.5s;
     }
     /* Dark Mode Overrides */
     body.dark-mode {
@@ -46,7 +46,7 @@
       line-height: 1.6;
       transition: background 0.3s, color 0.3s;
     }
-    /* Header with Logo, Navigation & Dark Mode Toggle */
+    /* Header */
     header {
       background: linear-gradient(135deg, var(--secondary-color), #000);
       padding: 15px 30px;
@@ -54,7 +54,7 @@
       width: 100%;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
     .nav-container {
       display: flex;
@@ -96,7 +96,7 @@
       color: var(--white);
       text-decoration: none;
       font-weight: 500;
-      transition: color var(--transition-speed);
+      transition: color 0.3s;
     }
     .nav-list li a:hover {
       color: var(--accent-color);
@@ -112,9 +112,9 @@
       width: 25px;
       height: 3px;
       background: var(--white);
-      transition: all var(--transition-speed);
+      transition: all 0.3s;
     }
-    /* Dark Mode Toggle Button */
+    /* Dark Mode Toggle */
     #dark-mode-toggle {
       background: none;
       border: 1px solid var(--white);
@@ -122,20 +122,18 @@
       padding: 5px 10px;
       cursor: pointer;
       border-radius: 5px;
-      transition: background var(--transition-speed);
+      transition: background 0.3s;
     }
     #dark-mode-toggle:hover {
       background: var(--accent-color);
     }
     /* Hero Section */
     .hero {
-      background: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&h=600&q=80')
-        no-repeat center center/cover;
+      background: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&h=600&q=80') no-repeat center center/cover;
       height: 600px;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
       margin-top: 80px;
     }
     .hero h1 {
@@ -144,7 +142,7 @@
       text-align: center;
       color: var(--white);
       letter-spacing: 1px;
-      text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
+      text-shadow: 4px 4px 8px rgba(0,0,0,0.8);
     }
     /* About Section */
     #about {
@@ -156,7 +154,7 @@
       border-radius: 8px;
       max-width: 900px;
       margin: 0 auto;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       text-align: center;
     }
     .about h2 {
@@ -167,7 +165,7 @@
       font-size: 1.1em;
       line-height: 1.8;
     }
-    /* Products Section & Filter */
+    /* Products Section */
     #products {
       padding: 100px 30px 30px;
     }
@@ -198,18 +196,31 @@
       background: var(--white);
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     .product-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
-    .product-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
+    /* Carousel Styles */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      background: transparent;
     }
+    .carousel-inner {
+      display: flex;
+      transition: transform var(--transition-duration) ease;
+    }
+    .carousel-inner img {
+      width: 100%;
+      flex-shrink: 0;
+      object-fit: cover;
+      height: 200px;
+    }
+    /* Removed Arrow Button Styles */
+    /* (No arrow buttons are included in the markup) */
     .card-content {
       padding: 20px;
     }
@@ -234,7 +245,7 @@
       font-size: 1em;
       border-radius: 5px;
       cursor: pointer;
-      transition: background var(--transition-speed);
+      transition: background 0.3s;
     }
     .product-card button:hover {
       background: var(--primary-dark);
@@ -248,7 +259,7 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0,0,0,0.6);
       animation: fadeIn 0.5s;
     }
     @keyframes fadeIn {
@@ -262,7 +273,7 @@
       max-width: 600px;
       border-radius: 8px;
       position: relative;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       animation: slideDown 0.5s;
     }
     @keyframes slideDown {
@@ -280,7 +291,7 @@
       font-size: 28px;
       color: var(--secondary-color);
       cursor: pointer;
-      transition: color var(--transition-speed);
+      transition: color 0.3s;
     }
     .close-btn:hover {
       color: var(--accent-color);
@@ -314,7 +325,7 @@
       font-size: 1.1em;
       border-radius: 5px;
       cursor: pointer;
-      transition: background var(--transition-speed);
+      transition: background 0.3s;
       margin-top: 20px;
     }
     #place-order:hover {
@@ -344,7 +355,7 @@
       height: 24px;
       width: 24px;
       fill: var(--white);
-      transition: fill var(--transition-speed);
+      transition: fill 0.3s;
     }
     footer .footer-links a:hover .social-icon {
       fill: var(--accent-color);
@@ -353,7 +364,7 @@
       margin: 0;
       font-size: 0.9em;
     }
-    /* Notification Styles */
+    /* Notification */
     #notification {
       position: fixed;
       top: 50%;
@@ -385,7 +396,7 @@
       cursor: pointer;
       display: none;
       z-index: 1000;
-      transition: background var(--transition-speed);
+      transition: background 0.3s;
     }
     #scrollToTop:hover {
       background: var(--primary-dark);
@@ -421,12 +432,12 @@
   </style>
 </head>
 <body>
-  <!-- Header with Logo, Navigation & Dark Mode Toggle -->
+  <!-- Header -->
   <header>
     <div class="nav-container">
       <div class="logo">
         <a href="#home">
-          <img src="logo.png" alt="Spider Web Domain Logo" loading="lazy" />
+          <img src="lw.png" alt="Spider Web Domain Logo" loading="lazy" />
           <span>Spider Web Domain</span>
         </a>
       </div>
@@ -447,7 +458,7 @@
     </div>
   </header>
 
-  <!-- Notification Container -->
+  <!-- Notification -->
   <div id="notification"></div>
 
   <!-- Hero Section -->
@@ -466,12 +477,12 @@
     </div>
   </section>
 
-  <!-- Products Section with Filter -->
+  <!-- Products Section -->
   <section id="products">
     <h2>Our Products</h2>
     <input type="text" id="product-filter" placeholder="Search Products..." aria-label="Product Search" />
     <div class="products" id="product-container">
-      <!-- Product cards injected via JavaScript -->
+      <!-- Product cards will be injected via JavaScript -->
     </div>
   </section>
 
@@ -493,19 +504,16 @@
   <!-- Footer -->
   <footer>
     <div class="footer-links">
-      <!-- Instagram Icon -->
       <a href="https://www.instagram.com/spiderwebdomain" target="_blank" aria-label="Instagram">
         <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <path d="M224.1 141c-63.6 0-115 51.4-115 115s51.4 115 115 115 115-51.4 115-115-51.4-115-115-115zm0 190c-41.4 0-75-33.6-75-75s33.6-75 75-75 75 33.6 75 75-33.6 75-75 75zm146.4-194.1c0 14.9-12 26.9-26.9 26.9h-26.9c-14.9 0-26.9-12-26.9-26.9v-26.9c0-14.9 12-26.9 26.9-26.9h26.9c14.9 0 26.9 12 26.9 26.9v26.9zM398.8 97.6c-1.9-39.6-10.9-74.7-41.5-105.3C327.9 17.9 292.8 8.9 253.2 7c-39.6-1.9-79.1-1.9-118.7 0-39.6 1.9-74.7 10.9-105.3 41.5C17.9 104.1 8.9 139.2 7 178.8c-1.9 39.6-1.9 79.1 0 118.7 1.9 39.6 10.9 74.7 41.5 105.3 30.6 30.6 65.7 39.6 105.3 41.5 39.6 1.9 79.1 1.9 118.7 0 39.6-1.9 74.7-10.9 105.3-41.5 30.6-30.6 39.6-65.7 41.5-105.3 1.9-39.6 1.9-79.1 0-118.7zM398.8 388c-7.8 19.6-22.9 34.7-42.5 42.5-29.4 11.7-99.2 9-132.3 9s-102.9 2.6-132.3-9c-19.6-7.8-34.7-22.9-42.5-42.5-11.7-29.4-9-99.2-9-132.3s-2.6-102.9 9-132.3c7.8-19.6 22.9-34.7 42.5-42.5 29.4-11.7 99.2-9 132.3-9s102.9-2.6 132.3 9c19.6 7.8 34.7 22.9 42.5 42.5 11.7 29.4 9 99.2 9 132.3s2.7 102.9-9 132.3z"/>
         </svg>
       </a>
-      <!-- WhatsApp Icon -->
       <a href="https://wa.me/03312497159" target="_blank" aria-label="WhatsApp">
         <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <path d="M380.9 97.1C339 55.3 282.2 32 223.9 32 100.3 32 0 132.3 0 255.9c0 45.2 12 88.1 34.8 125L0 480l104.3-34.5c36.6 20 78.5 30.5 120.1 30.5 123.6 0 223.9-100.3 223.9-223.9 0-58.3-23.3-115-65-157.9zM223.9 438.4c-36.9 0-73.1-9.8-105-28.3l-7.5-4.5L63 431l13.2-38.3-4.8-7.8c-19-31.1-29-66.7-29-103.4 0-112.8 91.7-204.5 204.5-204.5 54.7 0 106.3 21.3 144.8 59.8 38.5 38.5 59.8 90.1 59.8 144.8.1 112.8-91.6 204.5-204.5 204.5zm101.2-138.8c-5.5-2.8-32.5-16-37.6-17.8-5.1-1.8-8.8-2.8-12.5 2.8-3.7 5.6-14.4 17.8-17.7 21.5-3.3 3.7-6.7 4.2-12.2 1.4-32.5-16-53.8-28.9-75.5-65.3-5.7-9.8 5.7-9.1 16.4-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.2-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.3-.2-7.1-.2-10.9-.2s-9.7 1.4-14.8 7-19.6 19.1-19.6 46.5 20 54 22.8 57.8 37.5 43.1 90.8 60.6c12.7 5.5 22.7 8.8 30.4 11.3 12.7 4.1 24.2 3.5 33.3 2.1 10.1-1.6 32.5-13.3 37.2-26.2 4.5-12.7 4.5-23.6 3.1-26.2-1.4-2.8-5-4.5-10.5-7.3z"/>
         </svg>
       </a>
-      <!-- Email Icon -->
       <a href="mailto:spiderwebdomain.official@gmail.com" target="_blank" aria-label="Email">
         <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <path d="M502.3 190.8L327.4 338.6c-18.7 16.2-47.9 16.2-66.6 0L9.7 190.8C3.9 186.6 0 179.8 0 172.3V48C0 21.5 21.5 0 48 0h416c26.5 0 48 21.5 48 48v124.3c0 7.5-3.9 14.3-9.7 18.5zM0 224v240c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V224l-167.4 145.5c-35.3 30.7-87.1 30.7-122.4 0L0 224z"/>
@@ -532,16 +540,97 @@
       darkModeToggle.innerText = document.body.classList.contains("dark-mode") ? "Light Mode" : "Dark Mode";
     });
 
-    /* Product Array: 6 Website Products with prices in PKR
-       Prices are set between 1000 PKR (for Blog Website) to 5000 PKR (for E-commerce Website) */
+    /* Product Array with image sets */
     const products = [
-      { id: 1, name: "Minimalist Website", specs: "Clean, modern, minimalistic design", price: 2300, image: "minimalist.png" },
-      { id: 2, name: "Creative Website", specs: "Bold, artistic design with engaging visuals", price: 3700, image: "creative website.png" },
-      { id: 3, name: "Corporate Website", specs: "Professional, business-focused design", price: 3000, image: "cop.png" },
-      { id: 4, name: "E-commerce Website", specs: "Dynamic, interactive, user-friendly e-commerce design", price: 5000, image: "ec.png" },
-      { id: 5, name: "Portfolio Website", specs: "Elegant, creative portfolio design", price: 1700, image: "pw.png" },
-      { id: 6, name: "Blog Website", specs: "Clean, readable, content-focused design", price: 1000, image: "bw.png" }
+      { 
+        id: 1, 
+        name: "Minimalist Website", 
+        specs: "Clean, modern, minimalistic design", 
+        price: 2300, 
+        images: ["mw.png", "mw2.png"]
+      },
+      { 
+        id: 2, 
+        name: "Creative Website", 
+        specs: "Bold, artistic design with engaging visuals", 
+        price: 3700, 
+        images: ["cw.png", "cw2.png", "cw3.png"]
+      },
+      { 
+        id: 3, 
+        name: "Corporate Website", 
+        specs: "Professional, business-focused design", 
+        price: 3000, 
+        images: ["cow.png", "cow2.png", "cow3.png", "cow4.png", "cow5.png"]
+      },
+      { 
+        id: 4, 
+        name: "E-commerce Website", 
+        specs: "Dynamic, interactive, user-friendly e-commerce design", 
+        price: 5000, 
+        images: ["ecw.png", "ecw2.png"]
+      },
+      { 
+        id: 5, 
+        name: "Portfolio Website", 
+        specs: "Elegant, creative portfolio design", 
+        price: 1700, 
+        images: ["pw.png", "pw2.png", "pw3.png", "pw4.png"]
+      },
+      { 
+        id: 6, 
+        name: "Blog Website", 
+        specs: "Clean, readable, content-focused design", 
+        price: 1000, 
+        images: ["bw.png", "bw2.png", "bw3.png"]
+      }
     ];
+
+    /* Global objects for carousel indices and timers */
+    const carouselIndices = {};
+    const carouselTimers = {};
+
+    // Update the transform of the carousel-inner container
+    function updateCarousel(productId) {
+      const innerElem = document.getElementById('carousel-inner-' + productId);
+      if (innerElem) {
+        innerElem.style.transform = `translateX(-${carouselIndices[productId] * 100}%)`;
+      }
+    }
+
+    // Next image (auto-slide on hover)
+    function nextImage(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product) return;
+      if (carouselIndices[product.id] === undefined) carouselIndices[product.id] = 0;
+      carouselIndices[product.id] = (carouselIndices[product.id] + 1) % product.images.length;
+      updateCarousel(product.id);
+    }
+
+    // Previous image (not used since arrows are removed)
+    function prevImage(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product) return;
+      if (carouselIndices[product.id] === undefined) carouselIndices[product.id] = 0;
+      carouselIndices[product.id] = (carouselIndices[product.id] - 1 + product.images.length) % product.images.length;
+      updateCarousel(product.id);
+    }
+
+    // Start auto-sliding on hover (entire product card)
+    function startCarousel(productId) {
+      stopCarousel(productId);
+      carouselTimers[productId] = setInterval(() => {
+        nextImage(productId);
+      }, 3000);
+    }
+
+    // Stop auto-sliding on mouse leave
+    function stopCarousel(productId) {
+      if (carouselTimers[productId]) {
+        clearInterval(carouselTimers[productId]);
+        carouselTimers[productId] = null;
+      }
+    }
 
     /* Advanced Cart Functionality */
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -579,10 +668,19 @@
       const container = document.getElementById("product-container");
       container.innerHTML = "";
       filteredProducts.forEach(product => {
+        if (carouselIndices[product.id] === undefined) carouselIndices[product.id] = 0;
+        let imagesHTML = product.images.map(image => `<img src="${image}" alt="${product.name}" loading="lazy">`).join("");
         const card = document.createElement("div");
         card.className = "product-card";
+        // Attach auto-slide events to the entire product card
+        card.setAttribute("onmouseenter", `startCarousel(${product.id})`);
+        card.setAttribute("onmouseleave", `stopCarousel(${product.id})`);
         card.innerHTML = `
-          <img src="${product.image}" alt="${product.name}" loading="lazy">
+          <div class="carousel">
+            <div class="carousel-inner" id="carousel-inner-${product.id}">
+              ${imagesHTML}
+            </div>
+          </div>
           <div class="card-content">
             <h3>${product.name}</h3>
             <p>${product.specs}</p>
@@ -699,7 +797,6 @@
       cartModal.style.display = "block";
     });
     closeCart.addEventListener("click", () => cartModal.style.display = "none");
-    // Close modal when clicking outside the modal content
     window.addEventListener("click", (e) => {
       if (e.target === cartModal) cartModal.style.display = "none";
     });
@@ -728,7 +825,7 @@
       });
     }
 
-    // Initialize display
+    // Initialize display and update cart count
     displayProducts();
     updateCartCount();
   </script>
